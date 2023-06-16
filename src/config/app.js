@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 app.set('views', __root + '/src/views');
+app.set('layout', 'layouts/layout');
 app.use(express.static(__root + '/src/public'));
 
 // Init WS
