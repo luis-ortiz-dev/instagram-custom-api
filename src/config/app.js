@@ -7,14 +7,14 @@ const path = require('path');
 const __root = path.resolve();
 const { NODE_ENV } = require('./env');
 const endpoints = require('./endpoints');
-const forceSSL = require('./policies');
-const helmet = require('helmet');
+// const forceSSL = require('./policies');
+// const helmet = require('helmet');
 
 // Configuration
-app.use(helmet());
+// app.use(helmet());
 app.disable('x-powered-by');
 if (NODE_ENV === 'PRODUCTION'){
-    app.use(forceSSL);
+    // app.use(forceSSL);
 }
 app.use(express.urlencoded({
     extended: true
