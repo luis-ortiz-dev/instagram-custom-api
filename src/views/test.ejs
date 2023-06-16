@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="7; url='com.lemonlabs.logins://callback?access_token=<%= longToken.access_token %>&token_type=<%= longToken.token_type %>&expires_in=<%= longToken.expires_in %>&id=<%= userProfile.id %>&username=<%= userProfile.username %>'" />
+  </head>
+  <body>
+    <a href="com.lemonlabs.logins://callback?access_token=<%= longToken.access_token %>&token_type=<%= longToken.token_type %>&expires_in=<%= longToken.expires_in %>&id=<%= userProfile.id %>&username=<%= userProfile.username %>" target="_blank">You will be redirected my friend or click here!</a>
+    <p>Code for get the token: <%= code %></p>
+  </body>
+</html>

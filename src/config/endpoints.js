@@ -1,7 +1,5 @@
 'use strict'
 
-// const { apiV1 } = require('./versions');
-
 function initWebEndpoints(app){
     app.use(require('../routes/index.js'));
 }
