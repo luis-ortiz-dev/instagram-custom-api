@@ -53,7 +53,7 @@ router.get('/test', async (req, res) => {
 
         console.log("Begin user profile ws");
         // USER PROFILE
-        var userProfileResponse = await fetch(`https://graph.instagram.com/${jsonAccessToken.user_id}?fields=username&access_token=${longTokenJson.access_token}`, {
+        var userProfileResponse = await fetch(`https://graph.instagram.com/act_${jsonAccessToken.user_id}?fields=id,username&access_token=${longTokenJson.access_token}`, {
             method: 'GET'
         });
         var userProfileJson = await userProfileResponse.json();
