@@ -59,6 +59,12 @@ router.get('/test', async (req, res) => {
         var userProfileJson = await userProfileResponse.json();
         console.log(userProfileJson);
 
+        var userMediaResponse = await fetch(`https://graph.instagram.com/${userProfileJson.id}/media?fields=caption,id,media_type,media_url,timestamp&access_token=${longTokenJson.access_token}`,{
+            method: 'GET'
+        });
+        var userMediaJson = await userMediaResponse.json();
+        console.log(userMediaJson);
+
         // RENDER VIEW
         res.render('test', {
             title: 'Test',
