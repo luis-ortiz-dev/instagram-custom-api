@@ -10,6 +10,7 @@ const endpoints = require('./endpoints');
 
 // Configuration
 app.disable('x-powered-by');
+app.use(xhub({ algorithm: 'sha1', secret: process.env.APP_SECRET }));
 app.use(express.urlencoded({
     extended: true
 }));

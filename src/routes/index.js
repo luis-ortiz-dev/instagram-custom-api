@@ -1,8 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    return res.status(200).json({ message: 'Que show' });
+var token = process.env.TOKEN || 'InstagramWebhooksTest';
+var received_updates = [];
+
+app.get('/', function(req, res) {
+  console.log(req);
+  res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
 });
 
 router.get('/test', async (req, res) => {
@@ -80,7 +85,18 @@ router.get('/test', async (req, res) => {
     res.status(200).json({ message: 'Yo do not have access' });
 });
 
-router.post('/instagram-webhooks/user', async (req, res) => {
+app.get(['/facebook', '/instagram-webhooks'], function(req, res) {
+    if (
+      req.query['hub.mode'] == 'subscribe' &&
+      req.query['hub.verify_token'] == token
+    ) {
+      res.send(req.query['hub.challenge']);
+    } else {
+      res.sendStatus(400);
+    }
+  });
+
+router.post('/instagram-webhooks', async (req, res) => {
     console.log(req);
     console.log('--------------------------');
     console.log(res);
