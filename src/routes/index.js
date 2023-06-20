@@ -80,4 +80,10 @@ router.get('/test', async (req, res) => {
     res.status(200).json({ message: 'Yo do not have access' });
 });
 
+router.post('/instagram-webhooks/user', async (req, res) => {
+    console.log(req);
+    console.log('--------------------------');
+    console.log(res);
+});
+
 module.exports = router;
