@@ -3,6 +3,7 @@
 const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
+const xhub = require('express-x-hub');
 const path = require('path');
 const __root = path.resolve();
 const { NODE_ENV } = require('./env');
