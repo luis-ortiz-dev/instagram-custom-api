@@ -5,7 +5,7 @@ const router = express.Router();
 var token = process.env.TOKEN || 'InstagramWebhooksTest';
 var received_updates = [];
 
-app.get('/', function(req, res) {
+router.get('/', function(req, res) {
   console.log(req);
   res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
 });
@@ -85,7 +85,7 @@ router.get('/test', async (req, res) => {
     res.status(200).json({ message: 'Yo do not have access' });
 });
 
-app.get(['/facebook', '/instagram-webhooks'], function(req, res) {
+router.get(['/facebook', '/instagram-webhooks'], function(req, res) {
     if (
       req.query['hub.mode'] == 'subscribe' &&
       req.query['hub.verify_token'] == token
