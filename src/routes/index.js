@@ -99,6 +99,7 @@ router.get(['/facebook', '/instagram-webhooks'], function(req, res) {
 router.post('/instagram-webhooks', function (req, res) {
     console.log('Instagram request body:');
     console.log(req.body);
+    console.log(req.body.changes);
     // Process the Instagram updates here
     received_updates.unshift(req.body);
     res.sendStatus(200);
