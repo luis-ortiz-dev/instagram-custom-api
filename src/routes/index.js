@@ -6,8 +6,8 @@ var token = process.env.TOKEN || 'InstagramWebhooksTest';
 var received_updates = [];
 
 router.get('/', function(req, res) {
-  console.log(req);
-  res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
+    console.log(req);
+    res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
 });
 
 router.get('/test', async (req, res) => {
@@ -94,12 +94,14 @@ router.get(['/facebook', '/instagram-webhooks'], function(req, res) {
     } else {
       res.sendStatus(400);
     }
-  });
+});
 
-router.post('/instagram-webhooks', async (req, res) => {
-    console.log(req);
-    console.log('--------------------------');
-    console.log(res);
+router.post('/instagram-webhooks', function (req, res) {
+    console.log('Instagram request body:');
+    console.log(req.body);
+    // Process the Instagram updates here
+    received_updates.unshift(req.body);
+    res.sendStatus(200);
 });
 
 module.exports = router;
