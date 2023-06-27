@@ -15,8 +15,8 @@ router.get('/test', async (req, res) => {
     {
         console.log("Code: " + req.query.code);
 
-        var clientId = '1171495670260486';
-        var clientSecret = '118832bac0a74de45c2e4002a4aa66bb';
+        var clientId = '209034488591562';
+        var clientSecret = 'd953cdaaf5afcdc9320c29dc3dc48729';
 
         var query = {
             'client_id': clientId,
@@ -34,7 +34,6 @@ router.get('/test', async (req, res) => {
         }
         formBody = formBody.join("&");
 
-        console.log("Begin short token ws");
         //SHORT TOKEN
         var shortTokenResponse = await fetch('https://api.instagram.com/oauth/access_token',
             {
@@ -46,29 +45,13 @@ router.get('/test', async (req, res) => {
             });
         var jsonAccessToken = await shortTokenResponse.json();
         console.log(jsonAccessToken);
-        
-        console.log("Begin long token ws");
-        //LONG TOKEN
-        var longTokenResponse = await fetch(`https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=${clientSecret}&access_token=${jsonAccessToken.access_token}`, {
-            method: 'GET'
-        });
 
-        var longTokenJson = await longTokenResponse.json();
-        console.log(longTokenJson);
-
-        console.log("Begin user profile ws");
         // USER PROFILE
-        var userProfileResponse = await fetch(`https://graph.instagram.com/me?fields=id,username&access_token=${longTokenJson.access_token}`, {
+        var userProfileResponse = await fetch(`https://graph.instagram.com/me?fields=id,username&access_token=${jsonAccessToken.access_token}`, {
             method: 'GET'
         });
         var userProfileJson = await userProfileResponse.json();
         console.log(userProfileJson);
-
-        var userMediaResponse = await fetch(`https://graph.instagram.com/${userProfileJson.id}/media?fields=caption,id,media_type,media_url,timestamp&access_token=${longTokenJson.access_token}`,{
-            method: 'GET'
-        });
-        var userMediaJson = await userMediaResponse.json();
-        console.log(userMediaJson);
 
         // RENDER VIEW
         res.render('test', {
