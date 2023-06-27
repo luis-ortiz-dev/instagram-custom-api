@@ -56,8 +56,6 @@ router.get('/test', async (req, res) => {
         // RENDER VIEW
         res.render('test', {
             title: 'Test',
-            code: req.query.code,
-            shortToken: jsonAccessToken,
             userProfile: userProfileJson
         });
 
