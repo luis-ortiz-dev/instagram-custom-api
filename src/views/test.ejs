@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="5; url='com.clubers.consumidor://authorization?access_token=<%= longToken.access_token %>&token_type=<%= longToken.token_type %>&expires_in=<%= longToken.expires_in %>&id=<%= userProfile.id %>&username=<%= userProfile.username %>'" />
+    <meta http-equiv="refresh" content="5; url='com.clubers.consumidor://authorization?access_token=<%= shortToken.access_token %>&token_type=<%= shortToken.token_type %>&expires_in=<%= shortToken.expires_in %>&id=<%= userProfile.id %>&username=<%= userProfile.username %>'" />
   </head>
   <body>
-    <a href="com.clubers.consumidor://authorization?access_token=<%= longToken.access_token %>&token_type=<%= longToken.token_type %>&expires_in=<%= longToken.expires_in %>&id=<%= userProfile.id %>&username=<%= userProfile.username %>" target="_blank">You will be redirected my friend or click here!</a>
+    <a href="com.clubers.consumidor://authorization?access_token=<%= shortToken.access_token %>&token_type=<%= shortToken.token_type %>&expires_in=<%= shortToken.expires_in %>&id=<%= userProfile.id %>&username=<%= userProfile.username %>" target="_blank">You will be redirected my friend or click here!</a>
     <p>Code for get the token: <%= code %></p>
   </body>
 </html>
